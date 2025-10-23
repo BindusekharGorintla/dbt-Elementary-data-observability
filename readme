@@ -8,7 +8,6 @@ Elementary is a dbt-native data observability solution for data and analytics en
 
 On top it, Elementary also provides a seamless integration with slack to send automatically generated reports to teams and find out which Job, test has failed. Not to mention anomalies detection can be very powerful. If this sounds interesting, then please allow us to walk you through the setup and use cases.
 
-Press enter or click to view image in full size
 
 Open-source Package vs. Cloud Platform
 Elementary Cloud Platform
@@ -70,7 +69,6 @@ Apart from the regular DBT tests, Elementary also provides Freshness, Data Volum
 
 One can also drill down these reports with tags and owners. Different teams can watch for their marts to accept shared responsibility model.
 
-Press enter or click to view image in full size
 
 I hope this guide helped clear up some of the questions you had when starting with dbt. It may feel overwhelming at first, but that’s completely normal. With time and practice, you’ll get the hang of it. Keep going, you’ve got this!
 
