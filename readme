@@ -1,0 +1,80 @@
+What is dbt?
+Data Build Tool (dbt) is a tool primarily used for data transformation tasks within the modern data stack. Let’s see what that means!
+
+dbt enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications.
+
+What is Elementary?
+Elementary is a dbt-native data observability solution for data and analytics engineers. Set up in minutes, gain immediate visibility, detect data issues, send actionable alerts, and understand impact and root cause. Elementary has two offerings: an open-source package and managed platform.
+
+On top it, Elementary also provides a seamless integration with slack to send automatically generated reports to teams and find out which Job, test has failed. Not to mention anomalies detection can be very powerful. If this sounds interesting, then please allow us to walk you through the setup and use cases.
+
+Press enter or click to view image in full size
+
+Open-source Package vs. Cloud Platform
+Elementary Cloud Platform
+Ideal for teams monitoring mission-critical data pipelines, requiring guaranteed uptime and reliability, short-time-to-value, advanced features, collaboration, and professional support. The solution is secure by design, and requires no access to your data from cloud.
+
+Features
+Anomaly detection tests — Collect data quality metrics and detect anomalies, as native dbt tests.
+
+Automated monitors — Out-of-the-box cloud monitors to detect freshness, volume and schema issues.
+
+End-to-End Data Lineage — Enriched with the latest test results, for impact and root cause analysis of data issues. Elementary Cloud offers Column Level Lineage and BI integrations.
+
+Data quality dashboard — Single interface for all your data monitoring and test results.
+
+Models performance — Monitor models and jobs run results and performance over time.
+
+Configuration-as-code — Elementary configuration is managed in your dbt code.
+
+Alerts — Actionable alerts including custom channels and tagging of owners.
+
+Data catalog — Explore your datasets information — descriptions, columns, datasets health, etc.
+
+dbt artifacts uploader — Save metadata and run results as part of your dbt runs.
+
+AI-Powered Data Tests & Unstructured Data Validations — Validate and monitor data using AI powered tests to validate both structured and unstructured data
+
+How to install Elementary in DBT project?
+
+Step 1: Add elementary to packages.yml
+
+
+Step 2: Add elementary schema information in dbt_project.yml
+
+
+Step 3: Now, install Elementary by running below command and build elementary models for the first time.
+
+Press enter or click to view image in full size
+
+These steps are going to install elementary in your DBT project. Please follow along on how to generate dashboard.
+
+Reference Install Elementary dbt package — Elementary
+
+Reporting Dashboard
+To generate reporting dashboard, Elementary uses a python package. This python package comes with a bunch of CLI commands which will help us generate the report and do much more!
+
+Step 1: Provide DWH connection profile to elementary CLI. Run below command to generate the profile. Add it to your .dbt/profile.yml file.
+
+Press enter or click to view image in full size
+
+Step 2: Install CLI python package.
+
+
+Step 3: Generate the report
+
+
+Reporting Dashboard shows a nice UI on current count of tests, tests coverage, how many failed and how many are passing.
+
+Apart from the regular DBT tests, Elementary also provides Freshness, Data Volume anomalies, Column anomalies. These elementary specific tests are a great way to boost your data lineage needs into a solid tests.
+
+One can also drill down these reports with tags and owners. Different teams can watch for their marts to accept shared responsibility model.
+
+Press enter or click to view image in full size
+
+I hope this guide helped clear up some of the questions you had when starting with dbt. It may feel overwhelming at first, but that’s completely normal. With time and practice, you’ll get the hang of it. Keep going, you’ve got this!
+
+
+
+
+
