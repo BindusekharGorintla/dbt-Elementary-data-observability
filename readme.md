@@ -20,18 +20,16 @@ Example of an Elementary test config in `source.yml`:
 
 ```
 
- - name: hi_edw_x_databricks
-    catalog: "{{ var('hi_edw_x_src_catalog')}}"
-    schema: "{{ var('hi_edw_x_src_schema')}}"
+ - name: oncology_databricks
+    catalog: "{{ var('oncology_src_catalog')}}"
+    schema: "{{ var('oncology_src_schema')}}"
     tables:
-      - name: g1g2_rpt_patients
+      - name: onc_patients
         config: 
-          tags: ["hi_edw_x"]
+          tags: ["oncology"]
         columns:
-        - name: patient_id
-          description: "patient_id"
-          meta:
-            test_group: "RWDA-TC-9,10,11,12,52"
+        - name: pat_id
+          description: "pat_id"
           tests:
             - duplicates_check
 
