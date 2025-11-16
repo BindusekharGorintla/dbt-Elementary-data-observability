@@ -1,5 +1,5 @@
 [project]
-name = "databricks-labs-dqx"
+name = "databricks-labs-elementary"
 dynamic = ["version"]
 readme = { file = "README.md", content-type = "text/markdown" }
 description = 'Data Quality eXtended (DQX) is a Python library for data quality checks and data quality monitoring'
