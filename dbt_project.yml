@@ -1,16 +1,32 @@
-name: 'dbt_demo'
+# This is the Data Quality project configuration for consenting practice requirements
+name: 'Oncology'
 version: '1.0.0'
-profile: 'dbt_demo'
 
-model-paths: ["models"]
+config-version: 2
+vars:
+  Oncology_src_catalog: 'catalog_name'
+  Oncology_src_schema: 'schema_name'
 
-# Configuring models: https://docs.getdbt.com/docs/configuring-models
+
+profile: 'Oncology'
+
+model-paths: ["../../models"]
+analysis-paths: ["../../analyses"]
+test-paths: ["../../tests"]
+seed-paths: ["../../seeds"]
+macro-paths: ["../../macros"]
+snapshot-paths: ["../../snapshots"]
+packages-install-path: "../../dbt_packages"
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+
 models:
-  dbt_demo:
-    # materialize all models as tables by default
-    +materialized: table
-    # set default cluster to use for executing python models
-    +submission_method: serverless_cluster
-    +environment_key: Default
-    +environment_dependencies:
-      - databricks-labs-dqx
+  elementary:
+    +schema: "elementary"
+    # Include the following line if you only want Elementary to run when in a specified environment
+    enabled: "{{ target.name in ['cp'] }}"
+  
