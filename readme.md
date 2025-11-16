@@ -16,12 +16,7 @@
 This dbt-native package powers **Elementary**, helping data and analytics engineers **detect data anomalies** and build **rich metadata tables** from their dbt runs and tests. Gain immediate visibility into data quality trend and uncover potential issues, all within dbt.
 
 
-
-The **Elementary dbt package** is designed to enhance data observability within your dbt workflows. It includes two core components:
-
-
-
-Example of an Elementary test config in `schema.yml`:
+Example of an Elementary test config in `source.yml`:
 
 ```
 
