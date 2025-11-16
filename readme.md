@@ -15,6 +15,8 @@
 
 This dbt-native package powers **Elementary**, helping data and analytics engineers **detect data anomalies** and build **rich metadata tables** from their dbt runs and tests. Gain immediate visibility into data quality trend and uncover potential issues, all within dbt.
 
+<img width="890" height="559" alt="image" src="https://github.com/user-attachments/assets/436e489f-7538-420a-96c1-972cee8cfbce" />
+
 
 Example of an Elementary test config in `source.yml`:
 
