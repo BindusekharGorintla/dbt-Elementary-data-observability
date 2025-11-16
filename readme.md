@@ -77,4 +77,4 @@ Feel free to fork the repository, submit pull requests, or raise issues for impr
 
 ## 📧 Contact
 
-For questions or support, reach out to **Bindusekhar Gorintla** at [BindusekharGorintla](https://github.com/BindusekharGorintla).
+For questions or support, reach out to **Bindusekhar Gorintla** at [BindusekharGorintla](gorintla.bindusekhar@gmail.com).
