@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+
+  - name: oncology_databricks
+    catalog: "{{ var('oncology_src_catalog')}}"
+    schema: "{{ var('oncology_src_schema')}}"
+    tables:
+      - name: onc_patients
+        config: 
+          tags: ["oncology"]
+        columns:
+        - name: pat_id
+          description: "pat_id"
+          tests:
+            - duplicates_check
+        - name: date_of_birth
+          description: "date_of_birth"
+          tests:
+            - Column_date_value_not_null
+            - comparison_min_max_dates
+            - comparison_completion_rates_distinct_cnts
+        - name: ethnicity
+          description: "ethnicity"
+          tests:
+            - column_values_to_not_be_in_set: {'input_value' : No Data Row}
+            
+ 
