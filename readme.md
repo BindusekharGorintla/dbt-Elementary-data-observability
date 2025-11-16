@@ -69,8 +69,12 @@ Check out the [full documentation](https://docs.elementary-data.com/).
 - [Slack](https://join.slack.com/t/elementary-community/shared_invite/zt-uehfrq2f-zXeVTtXrjYRbdE_V6xq4Rg) (Talk to us, support, etc.)
 - [GitHub issues](https://github.com/elementary-data/elementary/issues) (Bug reports, feature requests)
 
-## Contributions
+## 👨‍💻 Contributing
 
-Thank you :orange_heart: Whether it's a bug fix, new feature, or additional documentation - we greatly appreciate contributions!
+Feel free to fork the repository, submit pull requests, or raise issues for improvements!
 
-Check out the [contributions guide](https://docs.elementary-data.com/oss/general/contributions) and [open issues](https://github.com/elementary-data/elementary/issues) in the main repo.
+---
+
+## 📧 Contact
+
+For questions or support, reach out to **Bindusekhar Gorintla** at [BindusekharGorintla](https://github.com/BindusekharGorintla).
