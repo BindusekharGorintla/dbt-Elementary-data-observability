@@ -25,48 +25,22 @@ Example of an Elementary test config in `schema.yml`:
 
 ```
 
-models:
-  - name: all_events
-    config:
-      elementary:
-        timestamp_column: 'loaded_at'
-    columns:
-      - name: event_count
-        tests:
-          - elementary.column_anomalies:
-              column_anomalies:
-                - average
-              where_expression: "event_type in ('event_1', 'event_2') and country_name != 'unwanted country'"
-              anomaly_sensitivity: 2
-              time_bucket:
-                period: day
-                count:1
+ - name: hi_edw_x_databricks
+    catalog: "{{ var('hi_edw_x_src_catalog')}}"
+    schema: "{{ var('hi_edw_x_src_schema')}}"
+    tables:
+      - name: g1g2_rpt_patients
+        config: 
+          tags: ["hi_edw_x"]
+        columns:
+        - name: patient_id
+          description: "patient_id"
+          meta:
+            test_group: "RWDA-TC-9,10,11,12,52"
+          tests:
+            - duplicates_check
 
 ```
-
-Elementary tests include:
-
-### **Anomaly Detection Tests**
-
-- **Volume anomalies -** Monitors the row count of your table over time per time bucket.
-- **Freshness anomalies -** Monitors the freshness of your table over time, as the expected time between data updates.
-- **Event freshness anomalies -** Monitors the freshness of event data over time, as the expected time it takes each event to load - that is, the time between when the event actually occurs (the **`event timestamp`**), and when it is loaded to the database (the **`update timestamp`**).
-- **Dimension anomalies -** Monitors the count of rows grouped by given **`dimensions`** (columns/expressions).
-- **Column anomalies -** Executes column level monitors on a certain column, with a chosen metric.
-- **All columns anomalies** - Executes column level monitors and anomaly detection on all the columns of the table.
-
-### **Schema Tests**
-
-- **Schema changes -** Alerts on a deleted table, deleted or added columns, or change of data type of a column.
-- **Schema changes from baseline** - Checks for schema changes against baseline columns defined in a source’s or model’s configuration.
-- **JSON schema** - Allows validating that a string column matches a given JSON schema.
-- **Exposure validation test -** Detects changes in your models’ columns that break downstream exposure.
-
-Read more about the available [Elementary tests and configuration](https://docs.elementary-data.com/data-tests/introduction).
-
-## Elementary Tables - Run Results and dbt Artifacts
-
-The **Elementary dbt package** automatically stores **dbt artifacts and run results** in your data warehouse, creating structured tables that provide visibility into your dbt runs and metadata.
 
 
 ## Quickstart - dbt Package
