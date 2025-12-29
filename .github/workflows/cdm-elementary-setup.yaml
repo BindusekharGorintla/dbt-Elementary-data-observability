@@ -1,0 +1,138 @@
+name: Setup Elementary Tables.
+
+on:
+  workflow_dispatch:
+    inputs:
+      databricks-workspace:
+        type: choice
+        description: Target DMI Databricks workspace
+        required: true
+        options:
+          - dev
+          - qa2
+          - uat
+          - prod
+
+env:
+  DBT_ACCESS_TOKEN: ${{ secrets.DMI_DATABRICKS_CDM_SERVICE_PRINCIPAL_TOKEN }}
+  DBT_PROFILES_DIR: ./conf
+
+jobs:
+  elementary-build:
+    # Latest Ubuntu supporting Python 3.9.5 is 20.04
+    environment: dmi-databricks-${{ github.event.inputs.databricks-workspace }}-workspace
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+      #----------------------------------------------
+      #       set-up python
+      #----------------------------------------------
+      - name: Configure Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9.5"
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+
+      #----------------------------------------------
+      #       cache poetry install
+      #
+      # Cache the installation of Poetry itself, e.g. the next step.
+      # This prevents the workflow from installing Poetry every time,
+      # which can be slow. Note the use of the Poetry version number
+      # in the cache key, and the "-0" suffix: this allows you to
+      # invalidate the cache manually if/when you want to upgrade
+      # Poetry, or if something goes wrong.
+      #----------------------------------------------
+      - name: cache poetry install
+        id: cached-poetry
+        uses: actions/cache@v3
+        with:
+          path: ~/.local
+          key: poetry-1.4.2-py-3.9.5
+
+      #----------------------------------------------
+      #       install poetry
+      #
+      # Install Poetry. You could do this manually, or there are
+      # several actions that do this. `snok/install-poetry` seems to
+      # be minimal yet complete, and really just calls out to Poetry's
+      # default install script, which feels correct. I pin the Poetry
+      # version here.
+      #
+      # The key configuration value here is `virtualenvs-in-project: true`:
+      # this creates the venv as a `.venv` in your project directory,
+      # which allows the `install` step to easily cache it.
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.4.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: false
+
+      #----------------------------------------------
+      #       cache poetry build
+      #
+      # Cache the dependencies (i.e. all the stuff in your `pyproject.toml`).
+      # Note the cache key: it just depends on the poetry.lock file.
+      #----------------------------------------------
+      - name: Poetry Build Cache
+        id: poetry-cache-dbt
+        uses: actions/cache@v3
+        with:
+          path: projects/oncology/.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('projects/oncology/poetry.lock') }}
+
+      #----------------------------------------------
+      #       install dependencies only
+      #
+      # Install dependencies. `--no-root` means "install all
+      # dependencies but not the project itself", which is what
+      # you want to avoid... i.e caching _the_ code. The `if`
+      # statement ensures this only runs on a cache miss.
+      #----------------------------------------------
+      - name: Install Dependencies
+        if: steps.poetry-cache-dbt.outputs.cache-hit != 'true'
+        working-directory: projects/oncology
+        run: poetry install --no-root --no-interaction
+
+      #----------------------------------------------
+      #       install library
+      #
+      # Now we install _the_ project. This is a good idea since
+      # it fully-exercises the pyproject.toml and makes that if
+      # you add things like console-scripts at some point that
+      # they'll be installed and working.
+      #----------------------------------------------
+      - name: Install Library
+        working-directory: projects/oncology
+        run: poetry install
+
+
+      - name: Install dependencies
+        working-directory: projects/oncology
+        run: |
+          poetry run dbt deps
+
+      # Build Elementary models
+      - name: Build Elementary models
+        working-directory: projects/oncology
+        
+        run: |
+          environment=${{ github.event.inputs.databricks-workspace }}
+          if [ "$environment" == "qa2" ]; then
+              poetry run dbt run --select elementary --full-refresh --target catalyst_qa_cp --project-dir conf/qa_cp
+          elif [ "$environment" == "dev" ]; then
+              poetry run dbt run --select elementary --full-refresh --target catalyst_dev
+          elif [ "$environment" == "uat" ]; then
+              poetry run dbt run --select elementary --full-refresh --target catalyst_ua --project-dir conf/ua
+          elif [ "$environment" == "uat" ]; then
+              poetry run dbt run --select elementary --full-refresh --target catalyst_prod --project-dir conf/prod
+          else
+              echo "TO BE SETUP"
+          fi
