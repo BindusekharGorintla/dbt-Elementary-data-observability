@@ -1,0 +1,21 @@
+name: jira-issue-key-checker
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+jobs:
+  enforce-issue:
+    runs-on: ubuntu-latest
+    name: enforce-jira-key-in-title
+    steps:
+      - name: check-pr-title
+        id: check
+        uses: usehaystack/jira-pr-link-action@v5
+        with:
+          ignore-author: dependabot[bot]
+          project: "ONCOLOGY|CANCER"
