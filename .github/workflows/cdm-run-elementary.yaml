@@ -1,0 +1,43 @@
+name: Run Elementary Report
+on:
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+    inputs:
+      databricks-workspace:
+        type: choice
+        description: Target Databricks workspace
+        required: true
+        options:
+          - dev
+          - qa2
+          - uat
+          - prod
+ 
+jobs:
+  elementary:
+    environment: dmi-databricks-${{ github.event.inputs.databricks-workspace }}-workspace
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dbt project
+        uses: actions/checkout@v4
+
+      - name: Run Elementary
+        uses: elementary-data/run-elementary-action@v1.11
+        with:
+          warehouse-type: databricks
+          profiles-yml: ${{ secrets.PROFILES_YML }}
+          edr-command:
+            edr report  
+              --file-path "report.html"
+            &&
+            edr send-report
+              --env prod
+              --azure-connection-string "${{ secrets.AZURE_CONNECTION_STRING }}"
+              --azure-container-name "\$web"
+              --update-bucket-website "true"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: oncology.html
+          path: report.html
