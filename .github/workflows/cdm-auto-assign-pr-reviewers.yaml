@@ -1,0 +1,66 @@
+name: Auto Assign Reviewers
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign reviewers based on author
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const author = context.payload.pull_request.user.login;
+  
+
+            const Medical = ["Name1", "Name2"];
+            const Surgical  = ["Name1", "Name2"];
+
+      
+            let reviewers = [];
+            let pod = null;
+      
+            // Identify the author's pod
+            if (Medical.includes(author)) {
+              reviewers = Medical.filter(r => r !== author);
+              pod = "Medical";
+            } else if (Surgical.includes(author)) {
+              reviewers = Surgical.filter(r => r !== author);
+              pod = "Surgical";
+            } 
+      
+            const owner = context.repo.owner;
+            const repo  = context.repo.repo;
+            const pull_number = context.payload.pull_request.number;
+      
+            if (reviewers.length === 0) {
+              console.log(`No reviewers assigned — author ${author} not in known list.`);
+            } else {
+              console.log(`Attempting to assign reviewers from ${pod}: ${reviewers.join(", ")}`);
+      
+              for (const reviewer of reviewers) {
+                try {
+                  await github.rest.pulls.requestReviewers({
+                    owner,
+                    repo,
+                    pull_number,
+                    reviewers: [reviewer],   // one at a time
+                  });
+                  console.log(`✅ Successfully requested review from ${reviewer}`);
+                } catch (error) {
+                  if (error.status === 422) {
+                    // Non-collaborator / invalid reviewer — log and continue
+                    core.warning(`⚠️ Could not request review from ${reviewer}: ${error.message}`);
+                  } else {
+                    // Any other error should still fail the job
+                    throw error;
+                  }
+                }
+              }
+            }
