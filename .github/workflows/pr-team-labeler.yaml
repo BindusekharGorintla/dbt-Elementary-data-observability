@@ -1,0 +1,22 @@
+# This workflow will apply a label based on PR author team found in
+# teams.yml file.
+#
+# To use this workflow, setup a .github/teams.yml file
+# with configuration. See:
+# https://github.com/JulienKode/team-labeler-action
+
+name: team-label
+on:
+  pull_request:
+  issues:
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  team-labeler:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: JulienKode/team-labeler-action@v1.1.0
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
