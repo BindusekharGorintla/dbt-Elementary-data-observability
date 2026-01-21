@@ -71,21 +71,10 @@ Check out the [full documentation](https://docs.elementary-data.com/).
 - [Slack](https://join.slack.com/t/elementary-community/shared_invite/zt-uehfrq2f-zXeVTtXrjYRbdE_V6xq4Rg) (Talk to us, support, etc.)
 - [GitHub issues](https://github.com/elementary-data/elementary/issues) (Bug reports, feature requests)
 
-##
+## 🤝 Contributing
 
-**Elementary contributors: ✨**
-
-[//]: contributor-faces
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<a href="https://github.com/BindusekharGorintla"><img src="https://avatars.githubusercontent.com/u/4517234?v=4" width="50" height="50" alt=""/></a> 
-<a href="https://github.com/keerthi662"><img src="https://avatars.githubusercontent.com/u/30181361?v=4" width="50" height="50" alt=""/></a>
-
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+4. Follow code review process
