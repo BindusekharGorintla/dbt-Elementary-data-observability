@@ -66,10 +66,6 @@ models:
 
 Check out the [full documentation](https://docs.elementary-data.com/).
 
-## Community & Support
-
-- [Slack](https://join.slack.com/t/elementary-community/shared_invite/zt-uehfrq2f-zXeVTtXrjYRbdE_V6xq4Rg) (Talk to us, support, etc.)
-- [GitHub issues](https://github.com/elementary-data/elementary/issues) (Bug reports, feature requests)
 
 ## 🤝 Contributing
 
