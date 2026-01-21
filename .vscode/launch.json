@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "oncology",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "elementary.cli.cli",
+      "console": "integratedTerminal",
+      "args": "${command:pickArgs}"
+    },
+    {
+      "name": "pytest: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-vvv", "-s", "${file}"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "pytest: Selector",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-vvv", "-s", "${file}::${input:selector}"],
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "selector",
+      "type": "promptString",
+      "description": "Selector"
+    }
+  ]
+}
