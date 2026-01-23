@@ -19,9 +19,18 @@ Elementary OSS: dbt-native data observability
 </div>
 </br>
 
-Elementary OSS is the open-source CLI for dbt-native data observability. It works with the [Elementary dbt package](https://github.com/elementary-data/dbt-data-reliability) to generate the basic Elementary observability report and send alerts to Slack and Microsoft Teams.
+## **What's Inside the Elementary dbt Package?**
 
-For teams that need data reliability at scale, we offer **[Elementary Cloud](https://www.elementary-data.com/)**, a full Data & AI Control Plane with automated ML monitoring, column-level lineage from source to BI, a built-in catalog, and AI agents that scale reliability workflows for both engineers and business users.
+The **Elementary dbt package** is designed to enhance data observability within your dbt workflows. It includes two core components:
+
+- **Elementary Tests** – A collection of **anomaly detection tests** and other data quality checks that help identify unexpected trends, missing data, or schema changes directly within your dbt runs.
+- **Metadata & Test Results Tables** – The package automatically generates and updates **metadata tables** in your data warehouse, capturing valuable information from your dbt runs and test results. These tables act as the backbone of your **observability setup**, enabling **alerts and reports** when connected to an Elementary observability platform.
+
+## Get more out of Elementary dbt package
+
+The **Elementary dbt package** helps you find anomalies in your data and build metadata tables from your dbt runs and tests—but there's even more you can do.
+
+To generate observability reports, send alerts, and govern your data quality effectively, connect your dbt package to one of the following options:
 
 - **Elementary OSS**  
   **A self-maintained, open-source CLI** that integrates seamlessly with your dbt project and the Elementary dbt package. It **enables alerting and provides the self-hosted Elementary data observability report**, offering a comprehensive view of your dbt runs, all dbt test results, data lineage, and test coverage. Quickstart [here](https://docs.elementary-data.com/oss/quickstart/quickstart-cli), and our team and community can provide great support on [Slack](https://www.elementary-data.com/community) if needed.
