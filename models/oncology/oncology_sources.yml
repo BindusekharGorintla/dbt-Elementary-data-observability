@@ -6,7 +6,7 @@ sources:
     catalog: "{{ var('oncology_src_catalog')}}"
     schema: "{{ var('oncology_src_schema')}}"
     tables:
-      - name: onc_patients
+      - name: member
         config: 
           tags: ["oncology"]
         columns:
@@ -20,6 +20,18 @@ sources:
             - Column_date_value_not_null
             - comparison_min_max_dates
             - comparison_completion_rates_distinct_cnts
+            - duplicates_check
+        - name: tumour
+          description: "tumour"
+          tests:
+            - column_values_to_not_be_in_set: {'input_value' : No Data Row}
+        - name: drug
+          description: "drug"
+          tests:
+            - duplicates_check
+        - name: patient_rx
+          description: "patient_rx"
+          tests:
             - duplicates_check
         - name: ethnicity
           description: "ethnicity"
