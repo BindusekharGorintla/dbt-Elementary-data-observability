@@ -7,7 +7,6 @@
 <img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-ff69b4"/>
 <img alt="Downloads" src="https://static.pepy.tech/personalized-badge/elementary-data?period=month&units=international_system&left_color=grey&right_color=orange"&left_text=Downloads/>
 </p>
-
 <h2 align="center">
 Elementary OSS: dbt-native data observability
 </h2>
