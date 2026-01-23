@@ -26,7 +26,6 @@ For teams that need data reliability at scale, we offer **[Elementary Cloud](htt
 ![Demo](static/newreadmedemo.gif)
 
 
-
 Example of an Elementary test config in `source.yml`:
 
 ```
