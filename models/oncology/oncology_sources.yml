@@ -20,9 +20,11 @@ sources:
             - Column_date_value_not_null
             - comparison_min_max_dates
             - comparison_completion_rates_distinct_cnts
+            - duplicates_check
         - name: ethnicity
           description: "ethnicity"
           tests:
             - column_values_to_not_be_in_set: {'input_value' : No Data Row}
+            
             
  
