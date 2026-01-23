@@ -17,9 +17,6 @@ Elementary OSS: dbt-native data observability
 [Docs »](https://docs.elementary-data.com/) | [Join the Elementary Community »](https://www.elementary-data.com/community)
 
 </div>
-<div align="center">
-  ⭐️ Star the repo <a href="https://github.com/elementary-data/elementary/stargazers"><img src="static/star_github.png" width="45"/></a> 
-</div>
 </br>
 
 **Built by the [Elementary](https://www.elementary-data.com) team, helping you deliver trusted data in the AI era.**
