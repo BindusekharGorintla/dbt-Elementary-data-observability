@@ -14,8 +14,8 @@ sources:
           description: "pat_id"
           tests:
             - duplicates_check
-        - name: date_of_birth
-          description: "date_of_birth"
+        - name: can_patient
+          description: "can_patient"
           tests:
             - Column_date_value_not_null
             - comparison_min_max_dates
