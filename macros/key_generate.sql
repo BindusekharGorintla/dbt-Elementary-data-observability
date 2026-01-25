@@ -1,6 +1,6 @@
 
 
-{% macro generate_key(table_name, key_type) %}
+{% macro key_generate(table_name, key_type) %}
 
     {%- if key_type not in ['natural', 'unique'] -%}
         {{ exceptions.raise_compiler_error("Invalid key_type provided. Must be 'natural' or 'unique'. Got: " ~ key_type) }}
