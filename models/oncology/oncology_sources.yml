@@ -6,35 +6,35 @@ sources:
     catalog: "{{ var('oncology_src_catalog')}}"
     schema: "{{ var('oncology_src_schema')}}"
     tables:
-      - name: member
+      - name: canc_patient
         config: 
           tags: ["oncology"]
         columns:
-        - name: pat_id
-          description: "pat_id"
+        - name: patient_id
+          description: "patient_id"
           tests:
             - duplicates_check
-        - name: can_patient
-          description: "can_patient"
+        - name: tnm_stg_system
+          description: "tnm_stg_system"
           tests:
             - Column_date_value_not_null
             - comparison_min_max_dates
             - comparison_completion_rates_distinct_cnts
             - duplicates_check
-        - name: tumour
-          description: "tumour"
+        - name: observation
+          description: "observation"
           tests:
             - column_values_to_not_be_in_set: {'input_value' : No Data Row}
-        - name: drug
-          description: "drug"
+        - name: lab_observation
+          description: "lab_observation"
           tests:
             - duplicates_check
-        - name: patient_rx
-          description: "patient_rx"
+        - name: biomarker
+          description: "biomarker"
           tests:
             - duplicates_check
-        - name: ethnicity
-          description: "ethnicity"
+        - name: claims
+          description: "claims"
           tests:
             - column_values_to_not_be_in_set: {'input_value' : No Data Row}
             - duplicates_check
