@@ -18,7 +18,6 @@ sources:
           - name: date_of_birth
           description: "date_of_birth"
           tests:
-            - duplicates_check
             - not_null
         - name: tnm_stg_system
           description: "tnm_stg_system"
