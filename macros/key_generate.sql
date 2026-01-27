@@ -12,7 +12,7 @@
             {{ key_type }}_key_name AS key_name,
             {{ key_type }}_key_columns AS key_columns
         FROM
-            {{ ref('key_info') }}
+            {{ ref('key_generate_info') }}
         WHERE
             table_name = '{{ table_name }}'
     {% endset %}
