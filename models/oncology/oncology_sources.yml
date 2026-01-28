@@ -42,8 +42,8 @@ sources:
           description: "biomarker"
           tests:
             - duplicates_check
-          - name: claims
-           description: "claims"
+          - name: canc_claim
+           description: "canc_claim"
            tests:
              - column_values_to_not_be_in_set: {'input_value' : No Data Row}
              - duplicates_check
