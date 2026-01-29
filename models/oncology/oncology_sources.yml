@@ -34,6 +34,7 @@ sources:
           description: "lab_observation"
           tests:
             - duplicates_check
+            - Column_date_value_not_null
         - name: biomarker
           description: "biomarker"
           tests:
