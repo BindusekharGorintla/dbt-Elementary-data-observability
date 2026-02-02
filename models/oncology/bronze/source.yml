@@ -1,1 +1,17 @@
+version: 2
 
+sources:
+
+  - name: bronze_databricks
+    catalog: "{{ var('bronze_src_catalog')}}"
+    schema: "{{ var('bronze_src_schema')}}"
+    tables:
+      - name: g1g2patient
+        config: 
+          tags: ["oncology"]
+        columns:
+        - name: patient_id
+          description: "patient_id"
+          tests:
+            - duplicates_check
+            - not_null
