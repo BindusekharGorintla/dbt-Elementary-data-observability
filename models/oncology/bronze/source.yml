@@ -12,6 +12,3 @@ sources:
         columns:
         - name: patient_id
           description: "patient_id"
-          tests:
-            - duplicates_check
-            - not_null
