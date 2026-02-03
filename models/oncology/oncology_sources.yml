@@ -6,7 +6,7 @@ sources:
     catalog: "{{ var('oncology_src_catalog')}}"
     schema: "{{ var('oncology_src_schema')}}"
     tables:
-      - name: canc_patient
+      - name: cancer_patient
         config: 
           tags: ["oncology"]
         columns:
@@ -19,8 +19,8 @@ sources:
           description: "date_of_birth"
           tests:
             - not_null
-        - name: tnm_stg_system
-          description: "tnm_stg_system"
+        - name: tnm_stg_group
+          description: "tnm_stg_group"
           tests:
             - Column_date_value_not_null
             - comparison_min_max_dates
@@ -35,8 +35,8 @@ sources:
           tests:
             - duplicates_check
             - Column_date_value_not_null
-        - name: biomarker
-          description: "biomarker"
+        - name: cancer_disease_status
+          description: "cancer_disease_status"
           tests:
             - duplicates_check
          - name: biomarker
