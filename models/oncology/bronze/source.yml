@@ -7,8 +7,4 @@ sources:
     schema: "{{ var('bronze_src_schema')}}"
     tables:
       - name: g1g2patient
-        config: 
-          tags: ["oncology"]
-        columns:
-        - name: patient_id
-          description: "patient_id"
+
