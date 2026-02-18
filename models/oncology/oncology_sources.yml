@@ -48,5 +48,6 @@ sources:
            description: "canc_claim"
            tests:
              - duplicates_check
+             - Column_date_value_not_null
             
  
