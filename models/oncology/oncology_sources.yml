@@ -44,8 +44,8 @@ sources:
           description: "biomarker"
           tests:
             - duplicates_check
-          - name: canc_claim
-           description: "canc_claim"
+          - name: primary_cancer_condition
+           description: "primary_cancer_condition"
            tests:
              - duplicates_check
              - Column_date_value_not_null
