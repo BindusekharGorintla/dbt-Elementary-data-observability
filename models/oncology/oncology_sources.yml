@@ -53,6 +53,7 @@ sources:
            description: "primary_cancer_condition"
            tests:
              - duplicates_check
+             - Column_date_value_not_null
 
             
  
