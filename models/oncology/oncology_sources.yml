@@ -55,8 +55,12 @@ sources:
              - duplicates_check
              - Column_date_value_not_null
           - name: lab_observation
-          description: "lab_observation"
-          tests:
+            config: 
+              tags: ["oncology"]
+            columns:
+         - name: patient_id
+           description: "lab_observation"
+           tests:
             - duplicates_check
             - Column_date_value_not_null
 
